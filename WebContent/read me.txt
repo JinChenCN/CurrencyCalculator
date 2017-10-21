@@ -1,0 +1,5 @@
+Currency Calculator:
+
+Step1: Select different source/target currency, also need to input amount to convert
+Step2: Click 'Calculate' button, then you can see conversion history, or click 'Reset' button to reset params
+Step3: If you did some conversions successfully, you should see coversion history table. Then click 'Check' button on the right side of specific item of the table, you should see historical currency rate of specific source/target currency

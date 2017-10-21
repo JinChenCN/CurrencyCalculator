@@ -1,0 +1,25 @@
+<!DOCTYPE html>  
+<html>  
+<head lang="en">  
+    <meta charset="UTF-8">  
+    <title>Currency Calculator</title>
+    <style>
+	    .list_data { margin-bottom: 2rem }
+	    table, th, td { border: 1px solid #AAA }
+	    th { cursor: pointer }
+    </style>
+</head>  
+<body ng-app="myApp" ng-controller="BarCtrl">   
+    <div class="add_data">
+        <h1>Currency Calculator</h1>
+        <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series">
+		</canvas>
+    </div> 
+    <script src="app/js/angular.min.js"></script>  
+	<script src="app/js/jquery.min.js"></script>  
+	<script src="app/js/Chart.min.js"></script>
+	<script src="app/js/angular-chart.min.js"></script>
+	<script src="app/app.js"></script>  
+	<script src="app/controllers/myControllers.js"></script>   
+</body>  
+</html> 

@@ -1,0 +1,87 @@
+<!DOCTYPE html>  
+<html>  
+<head lang="en">  
+    <meta charset="UTF-8">  
+    <title>Currency Calculator</title>
+    <style>
+	    .list_data { margin-bottom: 2rem }
+	    table, th, td { border: 1px solid #AAA }
+	    th { cursor: pointer }
+    </style>
+</head>  
+<body ng-app="myApp" ng-controller="myCtrl">  
+    <div class="add_data">
+        <h1>Currency Calculator</h1>
+        <form ng-submit="calculate()">
+        	<div class="field">
+                <label>Source Currency: </label>
+                <select ng-init="newSourceCurrency = currencies[0]" ng-model="newSourceCurrency">
+					<option ng-repeat="x in currencies">{{x}}</option>
+				</select>
+            </div>
+            <div class="field">
+                <label>Target Currency: </label>
+                <select ng-init="newTargetCurrency = currencies[1]" ng-model="newTargetCurrency">
+					<option ng-repeat="x in currencies">{{x}}</option>
+				</select>
+            </div>
+            <div class="field">
+                <label>Amount To Convert: </label>
+                <input id="newInputAmount" type="number" step="0.01" placeholder="amount" min="0" ng-model="newInputAmount" required>
+            </div>
+            <div class="field">
+                <label>Currency Interbank Rate: </label>
+                <label>{{newCurrencyRate}}</label>
+            </div>
+            <div class="field">
+                <label>Converted Amount: </label>
+                <label>{{newOutputAmount | currency:""}}</label>
+            </div>
+            <div class="action">
+                <button type="submit">Calculate</button>
+                <button ng-click="reset()">Reset</button>
+            </div>
+        </form>
+    </div> 
+    <div class="list_data">
+		<h1>Conversion History</h1>
+        <table>
+            <tr>
+                <th>Source Currency</th>
+                <th>Target Currency</th>
+                <th>Amount To Convert</th>
+                <th>Current Interbank Rate</th>
+                <th>Converted Amount</th>
+                <th>Historical Currency Rate</th>
+            </tr>
+            <tr ng-repeat="record in records">
+                <td>{{record.sourceCurrency}}</td>
+                <td>{{record.targetCurrency}}</td>
+                <td>{{record.inputAmount}}</td>
+                <td>{{record.currencyRate}}</td>
+                <td>{{record.outputAmount | currency:""}}</td>
+                <td><button ng-click="check($index)">Check</button></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+    	<h1>Historical Currency Rate</h1>
+    	<div class="field">
+	        <label>Source Currency: </label>
+	        <label>{{historicalSourceCurrency}}</label>
+	    </div>
+	    <div class="field">
+	        <label>Target Currency: </label>
+	        <label>{{historicalTargetCurrency}}</label>
+	    </div>
+    	<canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-legend="true" chart-series="series" chart-click="onClick" ></canvas>
+    </div>
+    <script src="app/js/angular.min.js"></script>  
+	<script src="app/js/jquery.min.js"></script>  
+	<script src="app/js/Chart.min.js"></script>
+	<script src="app/js/angular-chart.min.js"></script>
+	<script src="app/app.js"></script>  
+	<script src="app/controllers/myControllers.js"></script>   
+	<script src="app/services/myServices.js"></script> 
+</body>  
+</html> 
